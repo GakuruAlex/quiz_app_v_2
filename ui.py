@@ -1,7 +1,7 @@
-from tkinter import Button, Tk, Canvas, PhotoImage, WORD, Label
+from tkinter import Button, Tk, Canvas, PhotoImage, WORD, Label, messagebox
 from questions import Questions
 from score import Score
-class Ui:
+class UI:
     BACKGROUND_COLOR = "#375362"
     FONT = ("Arial", 20, "italic")
     CANVAS_COLOR = "white"
@@ -76,11 +76,17 @@ class Ui:
             self.disable_buttons()
 
 
-    def disable_buttons(self):
+    def disable_buttons(self)-> None:
+        """_Disable the buttons when there no more questions to display_
+        """
         self.right_image.config(state="disabled")
         self.wrong_image.config(state="disabled")
+        messagebox.showinfo(title="Game Over",message=f"Game Over! Your score is {self.score.score}")
+        self.window.after(1000, self.kill_window)
+    def kill_window(self):
+        self.window.destroy()
 
 
 
 if __name__ == "__main__":
-    ui = Ui()
+    ui = UI()
