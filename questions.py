@@ -25,7 +25,16 @@ class Questions:
         if self.question_counter < len(self.questions):
             self.current_question = self.questions[self.question_counter]
             self.question_counter += 1
+    def is_right(self, answer: str)->bool:
+        """_Check whether the user answer is correct_
 
+        Args:
+            answer (str): _Answer given by user_
+
+        Returns:
+            bool: _True if answer correct else False_
+        """
+        return answer == self.current_question["answer"]
 
 if __name__ == "__main__":
     questions=Questions()
