@@ -5,6 +5,8 @@ class Questions:
     URL = "https://opentdb.com/api.php?amount=20&category=18&type=boolean"
     def __init__(self):
         self.questions = {}
+        self.question_counter = 0
+        self.current_question = None
         self.get_questions()
     def get_questions(self)-> None:
         """_Fetch questions from Open Trivia Api, check for any HTTP error and store the response_
@@ -16,9 +18,17 @@ class Questions:
         """_Iterate over the results question list  and create a questions dict_
         """
         for question_no, result in enumerate(self.results):
-            self.questions.update({question_no + 1:{"question": unescape(result["question"]), "answer": result["correct_answer"]}})
+            self.questions.update({question_no :{"question": unescape(result["question"]), "answer": result["correct_answer"]}})
+    def next_question(self)->None:
+        """_Get current question to display_
+        """
+        if self.question_counter < len(self.questions):
+            self.current_question = self.questions[self.question_counter]
+            self.question_counter += 1
+
 
 if __name__ == "__main__":
     questions=Questions()
     questions.populate_questions()
-    print(questions.questions)
+    questions.next_question()
+    print(questions.current_question)
