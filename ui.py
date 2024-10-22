@@ -36,16 +36,24 @@ class Ui:
         self.wrong_image.grid(row=1, column=1, pady=self.PAD)
 
         self.window.mainloop()
-    def display_question(self):
+    def display_question(self)-> None:
+        """__Display the current question on the canvas_
+        """
         self.canvas.config(bg=self.CANVAS_COLOR)
         self.canvas.itemconfig(self.question_text, text=f"{self.questions.current_question['question']}")
-    def right_clicked(self):
+    def right_clicked(self)->None:
+        """_Set the answer to 'True' if the right icon button is clicked_
+        """
         self.answer: str = "True"
         self.correct_answer()
-    def wrong_clicked(self):
+    def wrong_clicked(self)->None:
+        """_Set the answer to 'False" when the wrong icon button is clicked_
+        """
         self.answer: str = "False"
         self.correct_answer()
-    def correct_answer(self):
+    def correct_answer(self)-> None:
+        """_Check if the user answer was correct , change canvas color accordingly then pull next question and display it_
+        """
         if self.questions.is_correct(self.answer):
             self.canvas.config(bg=self.CORRECT_COLOR)
             self.window.after(2000, self.questions.next_question)
