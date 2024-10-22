@@ -24,9 +24,8 @@ class Questions:
     def next_question(self)->None:
         """_Get current question to display_
         """
-        if self.question_counter < len(self.questions):
-            self.current_question = self.questions[self.question_counter]
-            self.question_counter += 1
+        self.current_question = self.questions[self.question_counter]
+        self.question_counter += 1
     def is_correct(self, answer: str)->bool:
         """_Check whether the user answer is correct_
 
@@ -37,6 +36,8 @@ class Questions:
             bool: _True if answer correct else False_
         """
         return answer == self.current_question["answer"]
+    def any_more_questions(self)-> bool:
+        return self.question_counter < len(self.questions)
 
 if __name__ == "__main__":
     questions=Questions()
