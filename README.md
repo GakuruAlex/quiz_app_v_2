@@ -6,7 +6,7 @@ This ia quiz project. The questions are fetched from Open Trivia Api with params
 
 ![Quiz App](images/Quiz_app.png)
 
-## Installation ##
+## Prerequisite ##
 
 clone repository
 
@@ -19,6 +19,24 @@ Change to project dir
 ```bash
 cd quiz_app_v_2
 ```
+
+Create virtual environment in the project dir
+
+```bash
+python -m venv env_name
+```
+
+Activate env
+
+```bash
+source env_name/bin/activate    #On macOs and Linux
+```
+
+```bash
+env_name\Scripts\activate #0n Windows
+```
+
+## Installation ##
 
 Run
 
